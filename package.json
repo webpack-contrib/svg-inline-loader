@@ -1,0 +1,25 @@
+{
+  "name": "svg-inline-loader",
+  "version": "0.1.0",
+  "description": "Inline SVG loader with cleaning-up functionality.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jaeho Lee <sairion@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sairion/svg-inline-loader.git"
+  },
+  "keywords": [
+    "svg",
+    "webpack",
+    "react",
+    "loader"
+  ],
+  "bugs": {
+    "url": "https://github.com/sairion/svg-inline-loader/issues"
+  },
+  "homepage": "https://github.com/sairion/svg-inline-loader"
+}
