@@ -12,22 +12,25 @@ function isSVGToken (tag) {
 
 function getExtractedSVG (svgStr) {
     // Clean-up XML crusts like comments and doctype, etc.
-    var svg = null;
+    var svg;
+    var tokens;
     var cleanedUp = svgStr.replace(/<\?xml[\s\S]*?>/gi, "")
                           .replace(/<!doctype[\s\S]*?>/gi, "")
                           .replace(/<!--[\s\S]*?-->/g, "")
+                          .replace(/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>") /* convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes */
+                          .replace(/\s+/g, " ") /* replace whitespace sequences with a single space */
+                          .replace(/\> \</g, "><") /* remove whitespace between tags */
                           .trim();
 
     // Tokenize and filter attributes.
     // Currently, this removes width and height attributes from <svg />.
     try {
-        var tokens = tokenize(cleanedUp);
+        tokens = tokenize(cleanedUp);
     } catch (e) {
+        // If tokenization has failed, return earlier with cleaned-up string
         console.warn('svg-inline-loader: Tokenization has failed, please check SVG is correct.');
-        svg = cleanedUp;
+        return cleanedUp;
     }
-    // If tokenization has failed, return earlier with cleaned-up string
-    if (svg !== null) return svg;
 
     tokens.forEach(function(tag) {
         if (isSVGToken(tag)) {
