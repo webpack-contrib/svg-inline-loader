@@ -10,20 +10,32 @@ function isSVGToken (tag) {
     return tag.type === 'StartTag' && tag.tagName === 'svg';
 }
 
+// TODO: find better parser/tokenizer
+var regexSequences = [
+    // Remove XML stuffs and comments
+    [/<\?xml[\s\S]*?>/gi, ""],
+    [/<!doctype[\s\S]*?>/gi, ""],
+    [/<!--.*-->/gi, ""],
+
+    // Non-displayed elements
+    [/<title>.*<\/title>/gi, ""],
+    [/<desc>.*<\/desc>/gi, ""],
+    [/<defs>.*<\/defs>/gi, ""],
+
+    // SVG XML -> HTML5
+    [/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>"], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
+    [/\s+/g, " "],                                 // replace whitespace sequences with a single space
+    [/\> \</g, "><"],                              // remove whitespace between tags
+];
+
 function getExtractedSVG (svgStr) {
     // Clean-up XML crusts like comments and doctype, etc.
-    var svg;
     var tokens;
-    var cleanedUp = svgStr.replace(/<\?xml[\s\S]*?>/gi, "")
-                          .replace(/<!doctype[\s\S]*?>/gi, "")
-                          .replace(/<!--[\s\S]*?-->/g, "")
-                          .replace(/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>") /* convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes */
-                          .replace(/\s+/g, " ") /* replace whitespace sequences with a single space */
-                          .replace(/\> \</g, "><") /* remove whitespace between tags */
-                          .trim();
+    var cleanedUp = regexSequences.reduce(function (prev, regexSequence) {
+        return ''.replace.apply(prev, regexSequence);
+    }, svgStr).trim();
 
-    // Tokenize and filter attributes.
-    // Currently, this removes width and height attributes from <svg />.
+    // Tokenize and filter attributes using `simpleHTMLTokenizer.tokenize(source)`.
     try {
         tokens = tokenize(cleanedUp);
     } catch (e) {
@@ -32,15 +44,15 @@ function getExtractedSVG (svgStr) {
         return cleanedUp;
     }
 
+    // If the token is <svg> start-tag, then remove width and height attributes.
     tokens.forEach(function(tag) {
         if (isSVGToken(tag)) {
             tag.attributes = tag.attributes.filter(hasNoWidthHeight);
         }
     });
-    // Finally, assemble tokens
-    svg = generate(tokens);
 
-    return svg
+    // Finally, assemble tokens
+    return generate(tokens);
 }
 
 function SVGInlineLoader (content) {
@@ -51,6 +63,7 @@ function SVGInlineLoader (content) {
 
 SVGInlineLoader.isSVGToken = isSVGToken;
 SVGInlineLoader.hasNoWidthHeight = hasNoWidthHeight;
-SVGInlineLoader.getExtractedSVG = getExtractedSVG ;
+SVGInlineLoader.getExtractedSVG = getExtractedSVG;
+SVGInlineLoader.regexSequences = regexSequences;
 
 module.exports = SVGInlineLoader;

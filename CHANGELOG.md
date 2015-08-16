@@ -3,7 +3,7 @@
 ## 0.2.1
 
 * Regex expanding self-closing tags added due to `simple-html-tokenizer`'s behavior (by @rondonjon)
-* Add README and CHANGELOG
+* Added README and CHANGELOG
 
 ## 0.2.0
 
