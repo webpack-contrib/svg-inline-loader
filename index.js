@@ -10,6 +10,7 @@ function isSVGToken (tag) {
     return tag.type === 'StartTag' && tag.tagName === 'svg';
 }
 
+// TODO: find better parser/tokenizer
 var regexSequences = [
     // Remove XML stuffs and comments
     [/<\?xml[\s\S]*?>/gi, ""],
@@ -34,8 +35,7 @@ function getExtractedSVG (svgStr) {
         return ''.replace.apply(prev, regexSequence);
     }, svgStr).trim();
 
-    // Tokenize and filter attributes.
-    // Currently, this removes width and height attributes from <svg />.
+    // Tokenize and filter attributes using `simpleHTMLTokenizer.tokenize(source)`.
     try {
         tokens = tokenize(cleanedUp);
     } catch (e) {
@@ -44,6 +44,7 @@ function getExtractedSVG (svgStr) {
         return cleanedUp;
     }
 
+    // If the token is <svg> start-tag, then remove width and height attributes.
     tokens.forEach(function(tag) {
         if (isSVGToken(tag)) {
             tag.attributes = tag.attributes.filter(hasNoWidthHeight);
