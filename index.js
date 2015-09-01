@@ -17,16 +17,22 @@ var regexSequences = [
     [/<!doctype[\s\S]*?>/gi, ""],
     [/<!--.*-->/gi, ""],
 
-    // Non-displayed elements
-    [/<title>.*<\/title>/gi, ""],
-    [/<desc>.*<\/desc>/gi, ""],
-    [/<defs>.*<\/defs>/gi, ""],
-
     // SVG XML -> HTML5
     [/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>"], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
     [/\s+/g, " "],                                 // replace whitespace sequences with a single space
     [/\> \</g, "><"],                              // remove whitespace between tags
 ];
+
+var removingTags = [
+    'title',
+    'desc',
+    'defs',
+    'style'
+];
+
+function isRemovingTag (tag) {
+    return removingTags.indexOf(tag.tagName) > -1;
+}
 
 function getExtractedSVG (svgStr) {
     // Clean-up XML crusts like comments and doctype, etc.
@@ -44,15 +50,31 @@ function getExtractedSVG (svgStr) {
         return cleanedUp;
     }
 
+    // FIXME: Due to limtation of parser, we need to implement our
+    // very own little state machine to express tree structure
+    var removingTag = null;
     // If the token is <svg> start-tag, then remove width and height attributes.
-    tokens.forEach(function(tag) {
-        if (isSVGToken(tag)) {
-            tag.attributes = tag.attributes.filter(hasNoWidthHeight);
-        }
-    });
+    return generate(tokens.map(function(tag) {
+        if (removingTag == null) {
+            // Reached start tag of a removing tag
+            if (isRemovingTag(tag)) {
+                removingTag = tag.tagName;
+                tag = null;
 
-    // Finally, assemble tokens
-    return generate(tokens);
+            // Other stuffs that needs to be modified
+            } else if (isSVGToken(tag)) {
+                tag.attributes = tag.attributes.filter(hasNoWidthHeight);
+            }
+        } else {
+            // Reached end tag of a removing tag
+            if (tag.tagName === removingTag && tag.type === 'EndTag') {
+                removingTag = null;
+            }
+            tag = null;
+        }
+        return tag;
+    })
+    .filter(function (nonNull) { return nonNull; }));
 }
 
 function SVGInlineLoader (content) {
