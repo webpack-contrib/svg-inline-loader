@@ -27,6 +27,16 @@ describe('getExtractedSVG()', function(){
         assert.isFalse(reTokenized[0].tagName === 'xml');
     });
 
+    it('should remove `<defs />` and its children', function () {
+        var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle);
+        var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
+
+        reTokenizedStyleInsertedSVG.forEach(function (tag) {
+            assert.isTrue(tag.tagName !== 'style' &&
+                          tag.tagName !== 'defs');
+        });
+    });
+
     // TODO: after adopting object-returning tokenizer/parser, this needs to be cleaned-up.
     it('should not remove width/height from non-svg element', function () {
         reTokenized.forEach(function(tag) {
