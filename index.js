@@ -17,11 +17,6 @@ var regexSequences = [
     [/<!doctype[\s\S]*?>/gi, ""],
     [/<!--.*-->/gi, ""],
 
-    // Non-displayed elements
-    [/<title>.*<\/title>/gi, ""],
-    [/<desc>.*<\/desc>/gi, ""],
-    [/<defs>.*<\/defs>/gi, ""],
-
     // SVG XML -> HTML5
     [/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>"], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
     [/\s+/g, " "],                                 // replace whitespace sequences with a single space
