@@ -5,14 +5,6 @@ var webpackConf = {
     entry: [
         './index.js'
     ],
-    module: {
-        loaders: [
-            {
-                test: /\.svg$/,
-                loader: 'svg-inline'
-            },
-        ],
-    },
     resolve: {
         extensions: ["", ".js", ".jsx"],
     },

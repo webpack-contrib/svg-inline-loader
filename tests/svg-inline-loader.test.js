@@ -5,12 +5,8 @@ var generate = simpleHTMLTokenizer.generate;
 var SVGInlineLoader = require('../index');
 var assert = require('chai').assert;
 
-var svgWithRect = [
-    '<?xml version="1.0"?>',
-    '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">',
-    '    <rect x="10" y="50" width="100" height="200"/>',
-    '</svg>'
-].join('');
+var svgWithRect = require('raw!./fixtures/xml-rect.svg');
+
 
 describe('getExtractedSVG()', function(){
     var processedSVG = SVGInlineLoader.getExtractedSVG(svgWithRect);
