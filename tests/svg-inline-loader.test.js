@@ -6,6 +6,7 @@ var SVGInlineLoader = require('../index');
 var assert = require('chai').assert;
 
 var svgWithRect = require('raw!./fixtures/xml-rect.svg');
+var svgWithStyle = require('raw!./fixtures/style-inserted.svg');
 
 
 describe('getExtractedSVG()', function(){
