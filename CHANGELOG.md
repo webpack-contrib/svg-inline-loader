@@ -1,9 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+* Isolate transfomration functions and make tag removal optional, add README
+* Added React svg icon tag
+
 ## 0.2.3
 
-* Tag removal is fixed (`<defs />`, `<style />`, `<title />`, ...) and test
-  added
+* Tag removal is fixed (`<defs />`, `<style />`, `<title />`, ...) and test added
 
 ## 0.2.2
 

@@ -15,9 +15,9 @@ describe('getExtractedSVG()', function(){
 
     it('should remove width and height from <svg /> element', function () {
         reTokenized.forEach(function(tag) {
-            if (SVGInlineLoader.isSVGToken(tag)) {
+            if (SVGInlineLoader.conditions.isSVGToken(tag)) {
                 tag.attributes.forEach(function (attributeToken) {
-                    assert.isTrue(SVGInlineLoader.hasNoWidthHeight(attributeToken));
+                    assert.isTrue(SVGInlineLoader.conditions.hasNoWidthHeight(attributeToken));
                 });
             }
         });
@@ -27,8 +27,8 @@ describe('getExtractedSVG()', function(){
         assert.isFalse(reTokenized[0].tagName === 'xml');
     });
 
-    it('should remove `<defs />` and its children', function () {
-        var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle);
+    it('should remove `<defs />` and its children if `removeTags` option is on', function () {
+        var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { removeTags: true });
         var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
 
         reTokenizedStyleInsertedSVG.forEach(function (tag) {
