@@ -25,34 +25,17 @@ Removes specified tags and its children. You can specify tags by setting `removi
 
 Removes `width` and `height` attributes from `<svg />`. Default is true.
 
-## Notes
+## `<IconSVG />` React Component
 
-([inspired by](https://gist.github.com/MoOx/1eb30eac43b2114de73a))
+To use this component in React, import/require from `svg-inline-loader/lib/component.jsx`.
+It is ES5-safe, no need to transpile, You will need `object-assign` and `react` as dependencies.
 
-To use in React, make a svg-container component
+Use like:
 
 ```jsx
-// Custom icon component for demonstration
-var Icon = React.createClass({
-    propTypes: {
-        svg: React.PropTypes.string.isRequired,
-    },
-    render () {
-        return (
-            <i {...this.props}
-               svg={null}
-               dangerouslySetInnerHTML={{__html: this.props.svg}}>
-            </i>
-        );
-    }
-});
-
+<IconSVG src={require("svg-inline!icon.svg")} />
 ```
 
-and use like:
+## Notes
 
-```
-
-<Icon svg={require('./icon.svg')} />
-
-```
+[inspired by](https://gist.github.com/MoOx/1eb30eac43b2114de73a)
