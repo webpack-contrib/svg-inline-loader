@@ -13,6 +13,8 @@ Simply add configuration object to `module.loaders` like this.
     }
 ```
 
+warning: You should configure this loader only once via `module.loaders` or `require('!...')`. See [#15](https://github.com/sairion/svg-inline-loader/issues/15) for detail.
+
 ### query
 
 There are a few queries available: `removeTags` (default: false), `removeSVGTagAttrs` (default: true), etc. (See `config.js`)
