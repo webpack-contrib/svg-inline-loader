@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+* Deprecated `<IconSVG />` and moved to another package ([`svg-inline-react`](https://github.com/sairion/svg-inline-react))
+
 ## 0.3.0
 
 * Isolate transfomration functions and make tag removal optional, add README

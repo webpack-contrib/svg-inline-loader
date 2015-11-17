@@ -2,10 +2,12 @@ var React = require('react');
 var assign = require('object-assign');
 
 
-// Use like:
+// DEPRECATED. Please use `svg-inline-react` package.
 //
 // <IconSVG src={require("svg-inline!icon.svg")} />
 //
+console.warn('<IconSVG />` React Component is DEPRECATED -> Use `svg-inline-react` package instead.');
+
 var IconSVG = React.createClass({
     getDefaultProps: function getDefaultProps() {
         return {
