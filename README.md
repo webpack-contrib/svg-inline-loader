@@ -29,4 +29,4 @@ Removes `width` and `height` attributes from `<svg />`. Default is true.
 
 ## Notes
 
-`<IconSVG />` React Component is **DEPRECATED**, use `svg-inline-react` package instead.
+`<IconSVG />` React Component is **DEPRECATED**, use [svg-inline-react](https://github.com/sairion/svg-inline-react) package instead.
