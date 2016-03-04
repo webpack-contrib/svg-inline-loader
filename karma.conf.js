@@ -2,6 +2,14 @@ var webpackConf = {
     cache: true,
     debug: true,
     devtool: 'inline-source-map',
+    module: {
+        loaders: [
+            {
+                test: /\.json$/,
+                loaders: ['json'],
+            },
+        ]
+    },
     entry: [
         './index.js'
     ],

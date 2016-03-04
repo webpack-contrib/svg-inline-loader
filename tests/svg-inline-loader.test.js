@@ -4,9 +4,9 @@ var generate = simpleHTMLTokenizer.generate;
 
 var SVGInlineLoader = require('../index');
 var assert = require('chai').assert;
+var _ = require('lodash');
 
 var svgWithRect = require('raw!./fixtures/xml-rect.svg');
-var svgWithStyle = require('raw!./fixtures/style-inserted.svg');
 
 
 describe('getExtractedSVG()', function(){
@@ -28,12 +28,26 @@ describe('getExtractedSVG()', function(){
     });
 
     it('should remove `<defs />` and its children if `removeTags` option is on', function () {
+        var svgWithStyle = require('raw!./fixtures/style-inserted.svg');
         var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { removeTags: true });
         var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
 
         reTokenizedStyleInsertedSVG.forEach(function (tag) {
             assert.isTrue(tag.tagName !== 'style' &&
                           tag.tagName !== 'defs');
+        });
+    });
+
+    it('should be able to specify tags to be removed by `removingTags` option', function () {
+        var svgRemovingTags = require('raw!./fixtures/removing-tags.svg');
+        var tobeRemoved = require('raw!./fixtures/removing-tags-to-be-removed.json');
+        var tobeRemain = require('raw!./fixtures/removing-tags-to-be-remain.json');
+
+        var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgRemovingTags, { removeTags: true, removingTags: tobeRemoved });
+        var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
+
+        reTokenizedStyleInsertedSVG.forEach(function (tag) {
+            assert.isTrue(_.includes(tobeRemain, tag.tagName));
         });
     });
 

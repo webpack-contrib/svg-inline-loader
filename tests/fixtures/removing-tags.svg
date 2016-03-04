@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- from https://developer.mozilla.org/en-US/docs/Web/SVG/Element 
+  var toCopy = [];
+  $('code').each((i,e) => {
+    toCopy.push($.trim($(e).text()));
+  });
+
+  copy(toCopy.map(e => e.replace('>', ' />')).join('\n')); // get list of svg elements tags
+
+  copy(toCopy.filter((e,i) => i % 2 === 1).map(
+    e => e.match(/\<(.+)\>$/)[1]
+  )) // get odd index of elements to be removed => 'removing-tags-to-be-removed.json'
+
+  copy(toCopy.filter((e,i) => i % 2 === 0).map(
+    e => e.match(/\<(.+)\>$/)[1]
+  )) // get even index of elements to be remain => 'removing-tags-to-be-remain.json'
+
+  toCopy += tag.replace('>', ' />');
+  copy(toCopy); 
+  -->
+  <a />
+  <altGlyph />
+  <altGlyphDef />
+  <altGlyphItem />
+  <animate />
+  <animateColor />
+  <animateMotion />
+  <animateTransform />
+  <circle />
+  <clipPath />
+  <color-profile />
+  <cursor />
+  <defs />
+  <desc />
+  <ellipse />
+  <feBlend />
+  <feColorMatrix />
+  <feComponentTransfer />
+  <feComposite />
+  <feConvolveMatrix />
+  <feDiffuseLighting />
+  <feDisplacementMap />
+  <feDistantLight />
+  <feFlood />
+  <feFuncA />
+  <feFuncB />
+  <feFuncG />
+  <feFuncR />
+  <feGaussianBlur />
+  <feImage />
+  <feMerge />
+  <feMergeNode />
+  <feMorphology />
+  <feOffset />
+  <fePointLight />
+  <feSpecularLighting />
+  <feSpotLight />
+  <feTile />
+  <feTurbulence />
+  <filter />
+  <font />
+  <font-face />
+  <font-face-format />
+  <font-face-name />
+  <font-face-src />
+  <font-face-uri />
+  <foreignObject />
+  <g />
+  <glyph />
+  <glyphRef />
+  <hkern />
+  <image />
+  <line />
+  <linearGradient />
+  <marker />
+  <mask />
+  <metadata />
+  <missing-glyph />
+  <mpath />
+  <path />
+  <pattern />
+  <polygon />
+  <polyline />
+  <radialGradient />
+  <rect />
+  <script />
+  <set />
+  <stop />
+  <style />
+  <svg />
+  <switch />
+  <symbol />
+  <text />
+  <textPath />
+  <title />
+  <tref />
+  <tspan />
+  <use />
+  <view />
+  <vkern />
+  <animate />
+  <animateColor />
+  <animateMotion />
+  <animateTransform />
+  <mpath />
+  <set />
+  <circle />
+  <ellipse />
+  <line />
+  <polygon />
+  <polyline />
+  <rect />
+  <a />
+  <defs />
+  <glyph />
+  <g />
+  <marker />
+  <mask />
+  <missing-glyph />
+  <pattern />
+  <svg />
+  <switch />
+  <symbol />
+  <desc />
+  <metadata />
+  <title />
+  <feBlend />
+  <feColorMatrix />
+  <feComponentTransfer />
+  <feComposite />
+  <feConvolveMatrix />
+  <feDiffuseLighting />
+  <feDisplacementMap />
+  <feFlood />
+  <feFuncA />
+  <feFuncB />
+  <feFuncG />
+  <feFuncR />
+  <feGaussianBlur />
+  <feImage />
+  <feMerge />
+  <feMergeNode />
+  <feMorphology />
+  <feOffset />
+  <feSpecularLighting />
+  <feTile />
+  <feTurbulence />
+  <font />
+  <font-face />
+  <font-face-format />
+  <font-face-name />
+  <font-face-src />
+  <font-face-uri />
+  <hkern />
+  <vkern />
+  <linearGradient />
+  <radialGradient />
+  <stop />
+  <circle />
+  <ellipse />
+  <image />
+  <line />
+  <path />
+  <polygon />
+  <polyline />
+  <rect />
+  <text />
+  <use />
+  <feDistantLight />
+  <fePointLight />
+  <feSpotLight />
+  <circle />
+  <ellipse />
+  <line />
+  <path />
+  <polygon />
+  <polyline />
+  <rect />
+  <defs />
+  <g />
+  <svg />
+  <symbol />
+  <use />
+  <altGlyph />
+  <altGlyphDef />
+  <altGlyphItem />
+  <glyph />
+  <glyphRef />
+  <textPath />
+  <text />
+  <tref />
+  <tspan />
+  <altGlyph />
+  <textPath />
+  <tref />
+  <tspan />
+  <clipPath />
+  <color-profile />
+  <cursor />
+  <filter />
+  <foreignObject />
+  <script />
+  <style />
+  <view />
+</svg>

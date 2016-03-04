@@ -15,18 +15,28 @@ Simply add configuration object to `module.loaders` like this.
 
 warning: You should configure this loader only once via `module.loaders` or `require('!...')`. See [#15](https://github.com/sairion/svg-inline-loader/issues/15) for detail.
 
-### query
+### query options
 
-There are a few queries available: `removeTags` (default: false), `removeSVGTagAttrs` (default: true), etc. (See `config.js`)
+#### `removeTags: boolean`
 
-#### `removeTags`
+Removes specified tags and its children. You can specify tags by setting `removingTags` query array.
 
-Removes specified tags and its children. You can specify tags by setting `removingTags` query array. (i.e. `?removingTags[]=style`)
+default: `removeTags: false`
 
-#### `removeSVGTagAttrs`
+#### `removingTags: [...string]`
 
-Removes `width` and `height` attributes from `<svg />`. Default is true.
+warning: this won't work unless you specify `removeTags: true`
+
+default: `removingTags: ['title', 'desc', 'defs', 'style']`
+
+#### `removeSVGTagAttrs: boolean`
+
+Removes `width` and `height` attributes from `<svg />`.
+
+default: `removeSVGTagAttrs: true`
 
 ## Notes
 
-`<IconSVG />` React Component is **DEPRECATED**, use [svg-inline-react](https://github.com/sairion/svg-inline-react) package instead.
+- `<IconSVG />` React Component is **DEPRECATED**, use `svg-inline-react` package instead.
+- Known problems:
+  - currently inlining SVG in css is unable. See #22
