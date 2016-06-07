@@ -35,6 +35,12 @@ Removes `width` and `height` attributes from `<svg />`.
 
 default: `removeSVGTagAttrs: true`
 
+#### `removingTagAttrs: [...string]`
+
+Removes attributes from inside the `<svg />`.
+
+default: `removingTagAttrs: []`
+
 ## Notes
 
 - `<IconSVG />` React Component is **DEPRECATED**, use `svg-inline-react` package instead.

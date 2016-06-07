@@ -6,5 +6,6 @@ module.exports = {
         'desc',
         'defs',
         'style'
-    ]
+    ],
+    removingTagAttrs: [ ]
 };

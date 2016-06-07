@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+* Added `removingTagAttrs` option
+
 ## 0.4.0
 
 * Deprecated `<IconSVG />` and moved to another package ([`svg-inline-react`](https://github.com/sairion/svg-inline-react))
