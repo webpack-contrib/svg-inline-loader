@@ -21,8 +21,9 @@ var regexSequences = [
 
 function getExtractedSVG(svgStr, query) {
     // interpolate hashes in classPrefix
-    if(!!query && 'classPrefix' in query) {
-        query.classPrefix = loaderUtils.interpolateName({}, query.classPrefix, {content: svgStr});
+    if(!!query && !!query.classPrefix) {
+        const name = query.classPrefix === true ? '__[hash:base64:7]__' : query.classPrefix;
+        query.classPrefix = loaderUtils.interpolateName({}, name, {content: svgStr});
     }
     // Clean-up XML crusts like comments and doctype, etc.
     var tokens;
