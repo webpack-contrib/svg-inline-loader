@@ -20,6 +20,10 @@ var regexSequences = [
 ];
 
 function getExtractedSVG(svgStr, query) {
+    // interpolate hashes in classPrefix
+    if(!!query && 'classPrefix' in query) {
+        query.classPrefix = loaderUtils.interpolateName({}, query.classPrefix, {content: svgStr});
+    }
     // Clean-up XML crusts like comments and doctype, etc.
     var tokens;
     var cleanedUp = regexSequences.reduce(function (prev, regexSequence) {
