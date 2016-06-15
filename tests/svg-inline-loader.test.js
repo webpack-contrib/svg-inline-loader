@@ -38,6 +38,16 @@ describe('getExtractedSVG()', function(){
         });
     });
 
+    it('should apply prefixes to class names', function () {
+        var svgWithStyle = require('raw!./fixtures/style-inserted.svg');
+        var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { classPrefix: 'test.prefix-' });
+
+        // Are all 10 classes prefixed in <style>
+        assert.isTrue( processedStyleInsertedSVG.match(/\.test\.prefix-/g).length === 10 );
+        // Is class attribute prefixed
+        assert.isTrue( processedStyleInsertedSVG.match(/class="test\.prefix-/g).length === 1 );
+    });
+
     it('should be able to specify tags to be removed by `removingTags` option', function () {
         var svgRemovingTags = require('raw!./fixtures/removing-tags.svg');
         var tobeRemoved = require('raw!./fixtures/removing-tags-to-be-removed.json');
