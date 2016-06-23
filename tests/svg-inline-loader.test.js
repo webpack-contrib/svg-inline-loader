@@ -40,8 +40,8 @@ describe('getExtractedSVG()', function(){
 
     it('should be able to specify tags to be removed by `removingTags` option', function () {
         var svgRemovingTags = require('raw!./fixtures/removing-tags.svg');
-        var tobeRemoved = require('raw!./fixtures/removing-tags-to-be-removed.json');
-        var tobeRemain = require('raw!./fixtures/removing-tags-to-be-remain.json');
+        var tobeRemoved = require('./fixtures/removing-tags-to-be-removed.json');
+        var tobeRemain = require('./fixtures/removing-tags-to-be-remain.json');
 
         var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgRemovingTags, { removeTags: true, removingTags: tobeRemoved });
         var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
@@ -77,6 +77,22 @@ describe('getExtractedSVG()', function(){
             if (tag.tagName === 'rect' &&
                 typeof tag.selfClosing !== 'undefined') {
                 assert.isFalse(tag.selfClosing)
+            }
+        });
+    });
+
+    it('should be able to specify attributes to be removed by `removingTagAttrs` option', function () {
+        var svgRemoveTagAttrs = require('raw!./fixtures/style-inserted.svg');
+        var tobeRemoved = require('./fixtures/removing-attrs-to-be-removed.json');
+
+        var processedSVG = SVGInlineLoader.getExtractedSVG(svgRemoveTagAttrs, { removingTagAttrs: tobeRemoved });
+        var reTokenizedSVG = tokenize(processedSVG);
+
+        reTokenizedSVG.forEach(function (tag) {
+            if(tag.attributes) {
+                tag.attributes.forEach(function(attr) {
+                    assert.isFalse(_.includes(tobeRemoved, attr[0]));
+                });
             }
         });
     });
