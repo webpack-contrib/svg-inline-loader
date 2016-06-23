@@ -7,5 +7,6 @@ module.exports = {
         'defs',
         'style'
     ],
-    removingTagAttrs: [ ]
+    removingTagAttrs: [],
+    classPrefix: false,
 };

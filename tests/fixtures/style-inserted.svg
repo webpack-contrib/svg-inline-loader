@@ -2,10 +2,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="48" height="48" viewBox="0 0 48 48">
   <defs>
     <style>
-      .cls-1 {
+      .cls-1,.cls_2 {
         fill: #000;
         fill-rule: evenodd;
       }
+      .c,.f,.g,
+      .h,.l{fill:none;stroke-miterlimit:10;}.c,.f,.g{stroke:#ccc;}
     </style>
   </defs>
   <g id="artboard-1">

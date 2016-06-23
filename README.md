@@ -41,6 +41,33 @@ Removes attributes from inside the `<svg />`.
 
 default: `removingTagAttrs: []`
 
+#### `classPrefix: boolean || string`
+
+Adds a prefix to class names to avoid collision across svg files.
+
+default: `classPrefix: false`
+
+##### Example Usage
+```js
+// Using default hashed prefix (__[hash:base64:7]__)
+var logoTwo = require('svg-inline?classPrefix!./logo_two.svg');
+
+// Using custom string
+var logoOne = require('svg-inline?classPrefix=my-prefix-!./logo_one.svg');
+
+// Using custom string and hash
+var logoThree = require('svg-inline?classPrefix=__prefix-[sha512:hash:hex:5]__!./logo_three.svg');
+```
+See [loader-utils](https://github.com/webpack/loader-utils#interpolatename) for hash options.
+
+Preferred usage is via a `module.loaders`:
+```js
+    {
+        test: /\.svg$/,
+        loader: 'svg-inline?classPrefix'
+    }
+```
+
 ## Notes
 
 - `<IconSVG />` React Component is **DEPRECATED**, use `svg-inline-react` package instead.
