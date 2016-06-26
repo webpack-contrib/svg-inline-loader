@@ -1,3 +1,5 @@
+**NOTICE [2016-06-26]: I'm not using or developing this lib anymore. Therefore I'm closing issues (which I cannot handle anymore), but you can send PR to improve or fix problems you facing with this lib.**
+
 # SVG Inline Loader for Webpack
 
 This Webpack loader inlines SVG as module. If you use Adobe suite or Sketch to export SVGs, you will get auto-generated, unneeded crusts. This loader removes it for you, too.
