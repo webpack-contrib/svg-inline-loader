@@ -1,6 +1,5 @@
 var simpleHTMLTokenizer = require('simple-html-tokenizer');
 var tokenize = simpleHTMLTokenizer.tokenize;
-var generate = simpleHTMLTokenizer.generate;
 
 var SVGInlineLoader = require('../index');
 var assert = require('chai').assert;
