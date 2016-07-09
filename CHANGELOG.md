@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+* Fixed a bug when using `removingTagAttrs`
+
 ## 0.6.0
 
 * Added `classPrefix` option (by @kinetifex)
