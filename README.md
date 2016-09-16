@@ -49,6 +49,13 @@ Adds a prefix to class names to avoid collision across svg files.
 
 default: `classPrefix: false`
 
+#### `idPrefix: boolean || string`
+
+Adds a prefix to ids to avoid collision across svg files.
+
+default: `idPrefix: false`
+
+
 ##### Example Usage
 ```js
 // Using default hashed prefix (__[hash:base64:7]__)

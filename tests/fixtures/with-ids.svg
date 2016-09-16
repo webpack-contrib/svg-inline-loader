@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <path id="foo"></path>
+    </defs>
+    <g>
+      <use xlink:href="#foo"></use>
+      <path mask="url(#foo)"></path>
+    </g>
+</svg>
