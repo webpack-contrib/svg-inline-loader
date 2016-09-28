@@ -31,6 +31,12 @@ warning: this won't work unless you specify `removeTags: true`
 
 default: `removingTags: ['title', 'desc', 'defs', 'style']`
 
+#### `warnTags: [...string]`
+
+warns about tags, ex: ['title', 'desc', 'defs', 'style']
+
+default: `warnTags: []`
+
 #### `removeSVGTagAttrs: boolean`
 
 Removes `width` and `height` attributes from `<svg />`.
@@ -43,6 +49,11 @@ Removes attributes from inside the `<svg />`.
 
 default: `removingTagAttrs: []`
 
+#### `warnTagAttrs: [...string]`
+
+Warns to console about attributes from inside the `<svg />`.
+
+default: `warnTagAttrs: []`
 #### `classPrefix: boolean || string`
 
 Adds a prefix to class names to avoid collision across svg files.

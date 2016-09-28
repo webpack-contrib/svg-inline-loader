@@ -16,7 +16,7 @@ var regexSequences = [
     // SVG XML -> HTML5
     [/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>"], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
     [/\s+/g, " "],                                 // replace whitespace sequences with a single space
-    [/\> \</g, "><"],                              // remove whitespace between tags
+    [/\> \</g, "><"]                               // remove whitespace between tags
 ];
 
 function getExtractedSVG(svgStr, query) {

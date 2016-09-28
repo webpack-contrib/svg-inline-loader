@@ -2,7 +2,12 @@ var simpleHTMLTokenizer = require('simple-html-tokenizer');
 var tokenize = simpleHTMLTokenizer.tokenize;
 
 var SVGInlineLoader = require('../index');
-var assert = require('chai').assert;
+var chai = require('chai');
+var assert = chai.assert;
+var expect = chai.expect;
+var spies = require('chai-spies');
+chai.use(spies);
+var createSpy = chai.spy;
 var _ = require('lodash');
 
 var svgWithRect = require('raw!./fixtures/xml-rect.svg');
@@ -117,5 +122,34 @@ describe('getExtractedSVG()', function(){
             }
         });
     });
+    it('should be able to warn about tagsAttrs to be removed listed in `warnTagAttrs` option via console.log', function () {
+        var svg = require('raw!./fixtures/with-ids.svg');
+        var tobeWarned = ['id'];
+        var oldConsoleWarn = console.warn;
+        var warnings=[];
+        console.warn=createSpy(function (str) {
+            warnings.push(str);
+        });
+        var processedSVG = SVGInlineLoader.getExtractedSVG(svg, { warnTagAttrs: tobeWarned });
+        var reTokenizedSVG = tokenize(processedSVG);
+        expect(console.warn).to.have.been.called.with('svg-inline-loader: tag path has forbidden attrs: id');
+        console.warn = oldConsoleWarn; // reset console back
+    });
 
+    it('should be able to specify tags to be warned about by `warnTags` option', function () {
+        var svg = require('raw!./fixtures/removing-tags.svg');
+        var tobeWarnedAbout = ['title', 'desc', 'defs', 'style', 'image'];
+        var oldConsoleWarn = console.warn;
+        var warnings=[];
+        console.warn=createSpy(function (str) {
+            warnings.push(str);
+        });
+        var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svg, { warnTags: tobeWarnedAbout });
+        var reTokenizedStyleInsertedSVG = tokenize(processedStyleInsertedSVG);
+
+        expect(console.warn).to.have.been.called();
+        expect(console.warn).to.have.been.called.min(3);
+        expect(console.warn).to.have.been.called.with('svg-inline-loader: forbidden tag style');
+        console.warn = oldConsoleWarn; // reset console back
+    });
 });
