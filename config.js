@@ -9,4 +9,5 @@ module.exports = {
     ],
     removingTagAttrs: [],
     classPrefix: false,
+    idPrefix: false,
 };
