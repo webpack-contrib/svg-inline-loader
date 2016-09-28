@@ -6,8 +6,8 @@ var webpackConf = {
         loaders: [
             {
                 test: /\.json$/,
-                loaders: ['json'],
-            },
+                loaders: ['json']
+            }
         ]
     },
     entry: [
@@ -15,7 +15,7 @@ var webpackConf = {
     ],
     resolve: {
         extensions: ["", ".js", ".jsx"],
-    },
+    }
 };
 
 module.exports = function(config) {
@@ -23,11 +23,11 @@ module.exports = function(config) {
         basePath: '.',
         frameworks: ['mocha'],
         files: [
-            './tests/**/*.js',
+            './tests/**/*.js'
         ],
         exclude: [],
         preprocessors: {
-            './tests/**/*.js': ['webpack'],
+            './tests/**/*.js': ['webpack']
         },
         reporters: ['spec'],
         port: 9876,
@@ -39,7 +39,7 @@ module.exports = function(config) {
             'karma-spec-reporter',
             'karma-mocha',
             'karma-chrome-launcher',
-            'karma-webpack',
+            'karma-webpack'
         ],
         webpack: webpackConf,
         autoWatch: true,
