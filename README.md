@@ -33,7 +33,7 @@ default: `removingTags: ['title', 'desc', 'defs', 'style']`
 
 #### `warnTags: [...string]`
 
-warns about tags, ex: ['title', 'desc', 'defs', 'style']
+warns about tags, ex: ['desc', 'defs', 'style']
 
 default: `warnTags: []`
 
