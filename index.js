@@ -2,6 +2,7 @@ var simpleHTMLTokenizer = require('simple-html-tokenizer');
 var tokenize = simpleHTMLTokenizer.tokenize;
 var generate = simpleHTMLTokenizer.generate;
 var loaderUtils = require('loader-utils');
+var assign = require('object-assign');
 
 var conditions = require('./lib/conditions');
 var transformer = require('./lib/transformer');
@@ -20,15 +21,20 @@ var regexSequences = [
 ];
 
 function getExtractedSVG(svgStr, query) {
+    var config;
     // interpolate hashes in classPrefix
-    if(!!query && !!query.classPrefix) {
-        const name = query.classPrefix === true ? '__[hash:base64:7]__' : query.classPrefix;
-        query.classPrefix = loaderUtils.interpolateName({}, name, {content: svgStr});
-    }
+    if(!!query) {
+        config = assign({}, query);
 
-    if (!!query && !!query.idPrefix) {
-        const id_name = query.idPrefix === true ? '__[hash:base64:7]__' : query.idPrefix;
-        query.idPrefix = loaderUtils.interpolateName({}, id_name, {content: svgStr});
+        if (!!config.classPrefix) {
+            const name = config.classPrefix === true ? '__[hash:base64:7]__' : config.classPrefix;
+            config.classPrefix = loaderUtils.interpolateName({}, name, { content: svgStr });
+        }
+
+        if (!!config.idPrefix) {
+            const id_name = config.idPrefix === true ? '__[hash:base64:7]__' : config.idPrefix;
+            config.idPrefix = loaderUtils.interpolateName({}, id_name, { content: svgStr });
+        }
     }
 
     // Clean-up XML crusts like comments and doctype, etc.
@@ -47,7 +53,7 @@ function getExtractedSVG(svgStr, query) {
     }
 
     // If the token is <svg> start-tag, then remove width and height attributes.
-    return generate(transformer.runTransform(tokens, query));
+    return generate(transformer.runTransform(tokens, config));
 }
 
 function SVGInlineLoader(content) {
