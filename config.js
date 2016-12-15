@@ -10,4 +10,6 @@ module.exports = {
     removingTagAttrs: [],
     classPrefix: false,
     idPrefix: false,
+    warnTags: [],
+    warnTagAttrs: []
 };
