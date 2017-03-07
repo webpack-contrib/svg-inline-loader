@@ -1,10 +1,27 @@
-**NOTICE [2016-06-26]: I'm not using or developing this lib anymore. Therefore I'm closing issues (which I cannot handle anymore), but you can send PR to improve or fix problems you facing with this lib.**
+[![npm][npm]][npm-url]
+[![deps][deps]][deps-url]
+[![test][test]][test-url]
+[![coverage][cover]][cover-url]
+[![quality][quality]][quality-url]
+[![chat][chat]][chat-url]
 
-# SVG Inline Loader for Webpack
+<div align="center">
+  <!-- replace with accurate logo e.g from https://worldvectorlogo.com/ -->
+  <a href="https://github.com/webpack/webpack">
+    <img width="200" height="200" vspace="" hspace="25"
+      src="https://cdn.rawgit.com/webpack/media/e7485eb2/logo/icon.svg">
+  </a>
+  <h1>SVG Inline Loader for Webpack</h1>
+  <p>This Webpack loader inlines SVG as module. If you use Adobe suite or Sketch to export SVGs, you will get auto-generated, unneeded crusts. This loader removes it for you, too.<p>
+</div>
 
-This Webpack loader inlines SVG as module. If you use Adobe suite or Sketch to export SVGs, you will get auto-generated, unneeded crusts. This loader removes it for you, too.
+<h2 align="center">Install</h2>
 
-## Config
+```bash
+npm install svg-inline-loader --save-dev
+```
+
+<h2 align="center">Configuration</h2>
 
 Simply add configuration object to `module.loaders` like this.
 
@@ -15,9 +32,9 @@ Simply add configuration object to `module.loaders` like this.
     }
 ```
 
-warning: You should configure this loader only once via `module.loaders` or `require('!...')`. See [#15](https://github.com/sairion/svg-inline-loader/issues/15) for detail.
+warning: You should configure this loader only once via `module.loaders` or `require('!...')`. See [#15](https://github.com/webpack-contrib/svg-inline-loader/issues/15) for detail.
 
-### query options
+<h2 align="center">Query Options</h2>
 
 #### `removeTags: boolean`
 
@@ -66,8 +83,8 @@ Adds a prefix to ids to avoid collision across svg files.
 
 default: `idPrefix: false`
 
+<h2 align="center">Example Usage</h2>
 
-##### Example Usage
 ```js
 // Using default hashed prefix (__[hash:base64:7]__)
 var logoTwo = require('svg-inline?classPrefix!./logo_two.svg');
@@ -88,8 +105,53 @@ Preferred usage is via a `module.loaders`:
     }
 ```
 
-## Notes
+<h2 align="center">Maintainers</h2>
 
-- `<IconSVG />` React Component is **DEPRECATED**, use `svg-inline-react` package instead.
-- Known problems:
-  - currently inlining SVG in css is unable. See #22
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="150" height="150"
+        src="https://avatars3.githubusercontent.com/u/166921?v=3&s=150">
+        </br>
+        <a href="https://github.com/bebraw">Juho Vepsäläinen</a>
+      </td>
+      <td align="center">
+        <img width="150" height="150"
+        src="https://avatars2.githubusercontent.com/u/8420490?v=3&s=150">
+        </br>
+        <a href="https://github.com/d3viant0ne">Joshua Wiens</a>
+      </td>
+      <td align="center">
+        <img width="150" height="150"
+        src="https://avatars3.githubusercontent.com/u/533616?v=3&s=150">
+        </br>
+        <a href="https://github.com/SpaceK33z">Kees Kluskens</a>
+      </td>
+      <td align="center">
+        <img width="150" height="150"
+        src="https://avatars3.githubusercontent.com/u/3408176?v=3&s=150">
+        </br>
+        <a href="https://github.com/TheLarkInn">Sean Larkin</a>
+      </td>
+    </tr>
+  <tbody>
+</table>
+
+[npm]: https://img.shields.io/npm/v/svg-inline-loader.svg
+[npm-url]: https://npmjs.com/package/svg-inline-loader
+
+[deps]: https://david-dm.org/webpack-contrib/svg-inline-loader.svg
+[deps-url]: https://david-dm.org/webpack-contrib/svg-inline-loader
+
+[chat]: https://img.shields.io/badge/gitter-webpack%2Fwebpack-brightgreen.svg
+[chat-url]: https://gitter.im/webpack/webpack
+
+[test]: https://travis-ci.org/webpack-contrib/svg-inline-loader.svg?branch=master
+[test-url]: https://travis-ci.org/webpack-contrib/svg-inline-loader
+
+[cover]: https://codecov.io/gh/webpack-contrib/svg-inline-loader/branch/master/graph/badge.svg
+[cover-url]: https://codecov.io/gh/webpack-contrib/svg-inline-loader
+
+[quality]: https://www.bithound.io/github/webpack-contrib/svg-inline-loader/badges/score.svg
+[quality-url]: https://www.bithound.io/github/webpack-contrib/svg-inline-loader
