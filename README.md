@@ -2,7 +2,6 @@
 [![deps][deps]][deps-url]
 [![test][test]][test-url]
 [![coverage][cover]][cover-url]
-[![quality][quality]][quality-url]
 [![chat][chat]][chat-url]
 
 <div align="center">
@@ -152,6 +151,3 @@ Preferred usage is via a `module.loaders`:
 
 [cover]: https://codecov.io/gh/webpack-contrib/svg-inline-loader/branch/master/graph/badge.svg
 [cover-url]: https://codecov.io/gh/webpack-contrib/svg-inline-loader
-
-[quality]: https://www.bithound.io/github/webpack-contrib/svg-inline-loader/badges/score.svg
-[quality-url]: https://www.bithound.io/github/webpack-contrib/svg-inline-loader
