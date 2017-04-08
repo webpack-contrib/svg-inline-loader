@@ -1,4 +1,4 @@
-import defaultConfig from '../config';
+import defaultConfig from './config';
 import conditions from './conditions';
 
 function removeSVGTagAttrs(tag) {
