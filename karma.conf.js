@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-var webpackConf = {
+const webpackConf = {
   cache: true,
   devtool: 'inline-source-map',
   module: {
@@ -20,12 +20,12 @@ var webpackConf = {
     './dist/cjs.js',
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
   },
 };
 
 module.exports = function (config) {
-  var conf = {
+  const conf = {
     basePath: '.',
     frameworks: ['mocha'],
     files: [
