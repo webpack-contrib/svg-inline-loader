@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/sairion/svg-inline-loader",
   "dependencies": {
-    "loader-utils": "^0.2.11",
+    "loader-utils": "^1.1.0",
     "object-assign": "^4.0.1",
     "simple-html-tokenizer": "^0.1.1"
   },

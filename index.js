@@ -59,10 +59,7 @@ function getExtractedSVG(svgStr, query) {
 function SVGInlineLoader(content) {
     this.cacheable && this.cacheable();
     this.value = content;
-    // Configuration
-    var query = loaderUtils.parseQuery(this.query);
-
-    return "module.exports = " + JSON.stringify(getExtractedSVG(content, query));
+    return "module.exports = " + JSON.stringify(getExtractedSVG(content, this.query));
 }
 
 SVGInlineLoader.getExtractedSVG = getExtractedSVG;
