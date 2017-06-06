@@ -82,6 +82,13 @@ Adds a prefix to ids to avoid collision across svg files.
 
 default: `idPrefix: false`
 
+#### `raw: boolean`
+
+Returns the content of the cleaned up SVG as a string instead of a module. Useful if you plan on passing
+the output on to file-loader, etc.
+
+default: `raw: false`
+
 <h2 align="center">Example Usage</h2>
 
 ```js
