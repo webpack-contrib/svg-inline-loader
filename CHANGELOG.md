@@ -1,3 +1,25 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/sairion/svg-inline-loader/compare/0.6.1...v0.8.0) (2017-07-16)
+
+
+### Bug Fixes
+
+* add missing idPrefix as default value to config, close [#36](https://github.com/sairion/svg-inline-loader/issues/36) ([ba7738d](https://github.com/sairion/svg-inline-loader/commit/ba7738d))
+* corrupted css properties in style tag ([2d28c42](https://github.com/sairion/svg-inline-loader/commit/2d28c42))
+* don't transform webpack2 query objects ([9373e3e](https://github.com/sairion/svg-inline-loader/commit/9373e3e))
+* multiple classes in class string fix ([2024e06](https://github.com/sairion/svg-inline-loader/commit/2024e06))
+
+
+### Features
+
+* warnTags and warnTagAttrs ([ada00d7](https://github.com/sairion/svg-inline-loader/commit/ada00d7))
+
+
+
 # Changelog
 
 ## 0.6.1
