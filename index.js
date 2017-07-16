@@ -62,7 +62,13 @@ function SVGInlineLoader(content) {
     // Configuration
     var query = loaderUtils.parseQuery(this.query);
 
-    return "module.exports = " + JSON.stringify(getExtractedSVG(content, query));
+    var extractedSVG = getExtractedSVG(content, query);
+
+    if (query.raw) {
+        return extractedSVG;
+    } else {
+        return "module.exports = " + JSON.stringify(extractedSVG);
+    }
 }
 
 SVGInlineLoader.getExtractedSVG = getExtractedSVG;
