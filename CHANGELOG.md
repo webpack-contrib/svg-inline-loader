@@ -19,9 +19,6 @@ All notable changes to this project will be documented in this file. See [standa
 * warnTags and warnTagAttrs ([ada00d7](https://github.com/sairion/svg-inline-loader/commit/ada00d7))
 
 
-
-# Changelog
-
 ## 0.6.1
 
 * Fixed a bug when using `removingTagAttrs`
