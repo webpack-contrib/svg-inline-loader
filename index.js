@@ -20,6 +20,7 @@ var regexSequences = [
     [/\> \</g, "><"]                               // remove whitespace between tags
 ];
 
+
 function getExtractedSVG(svgStr, options) {
     var config;
     // interpolate hashes in classPrefix

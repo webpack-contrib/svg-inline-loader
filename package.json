@@ -1,27 +1,14 @@
 {
   "name": "svg-inline-loader",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Cleans up and inlines your SVG files into Webpack module.",
-  "main": "index.js",
-  "scripts": {
-    "test": "karma start"
-  },
   "author": "Jaeho Lee <me@jaeholee.org>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sairion/svg-inline-loader.git"
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start",
+    "release": "standard-version"
   },
-  "keywords": [
-    "svg",
-    "webpack",
-    "react",
-    "loader"
-  ],
-  "bugs": {
-    "url": "https://github.com/sairion/svg-inline-loader/issues"
-  },
-  "homepage": "https://github.com/sairion/svg-inline-loader",
   "dependencies": {
     "loader-utils": "^1.1.0",
     "object-assign": "^4.0.1",
@@ -40,6 +27,21 @@
     "mocha": "^2.5.3",
     "node-libs-browser": "^1.0.0",
     "raw-loader": "^0.5.1",
+    "standard-version": "^4.2.0",
     "webpack": "^1.13.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sairion/svg-inline-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sairion/svg-inline-loader/issues"
+  },
+  "homepage": "https://github.com/sairion/svg-inline-loader",
+  "keywords": [
+    "svg",
+    "webpack",
+    "react",
+    "loader"
+  ]
 }
