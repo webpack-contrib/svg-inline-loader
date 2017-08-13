@@ -1,34 +1,68 @@
 {
   "name": "svg-inline-loader",
-  "version": "0.8.0",
+  "version": "0.7.1",
   "description": "Cleans up and inlines your SVG files into Webpack module.",
   "author": "Jaeho Lee <me@jaeholee.org>",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "karma start",
-    "release": "standard-version"
+    "test": "jest",
+    "test:integration": "karma start",
+    "webpack-defaults": "webpack-defaults",
+    "start": "npm run build -- -w",
+    "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js'",
+    "clean:dist": "del-cli dist",
+    "lint": "eslint --cache src test",
+    "lint-staged": "lint-staged",
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build",
+    "release": "standard-version",
+    "security": "nsp check",
+    "serve:dev": "nodemon $2 --exec babel-node",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --collectCoverageFrom='src/**/*.js' --coverage",
+    "travis:coverage": "npm run test:coverage -- --runInBand",
+    "travis:lint": "npm run lint && npm run security",
+    "travis:test": "npm run test -- --runInBand",
+    "appveyor:test": "npm run test",
+    "clean": "del-cli dist"
   },
   "dependencies": {
-    "loader-utils": "^0.2.11",
-    "object-assign": "^4.0.1",
+    "loader-utils": "^1.1.0",
     "simple-html-tokenizer": "^0.1.1"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-spies": "^0.7.1",
+    "babel-cli": "^6.24.0",
+    "babel-jest": "^20.0.3",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.1",
+    "del-cli": "^1.1.0",
+    "eslint": "^3.18.0",
+    "eslint-config-webpack": "^1.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^20.0.4",
     "json-loader": "^0.5.4",
-    "karma": "^1.0.0",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-mocha": "^1.0.1",
-    "karma-spec-reporter": "0.0.26",
-    "karma-webpack": "^1.5.1",
+    "lint-staged": "^3.4.0",
     "lodash": "^4.6.1",
-    "mocha": "^2.5.3",
     "node-libs-browser": "^1.0.0",
+    "nodemon": "^1.11.0",
+    "nsp": "^2.6.3",
+    "pre-commit": "^1.2.2",
     "raw-loader": "^0.5.1",
     "standard-version": "^4.2.0",
-    "webpack": "^1.13.1"
+    "webpack": "^3.2.0",
+    "webpack-defaults": "^1.5.0"
+  },
+  "peerDependencies": {
+    "webpack": "^2.0.0 || ^3.0.0"
+  },
+  "engines": {
+    "node": ">= 4.3 < 5.0.0 || >= 5.10"
   },
   "repository": {
     "type": "git",
@@ -43,5 +77,12 @@
     "webpack",
     "react",
     "loader"
-  ]
+  ],
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
 }

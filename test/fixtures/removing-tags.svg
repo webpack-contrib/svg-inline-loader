@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg">
-  <!-- from https://developer.mozilla.org/en-US/docs/Web/SVG/Element 
+  <!-- from https://developer.mozilla.org/en-US/docs/Web/SVG/Element
   var toCopy = [];
   $('code').each((i,e) => {
     toCopy.push($.trim($(e).text()));
@@ -17,7 +17,7 @@
   )) // get even index of elements to be remain => 'removing-tags-to-be-remain.json'
 
   toCopy += tag.replace('>', ' />');
-  copy(toCopy); 
+  copy(toCopy);
   -->
   <a />
   <altGlyph />
