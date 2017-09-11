@@ -59,7 +59,7 @@ describe('getExtractedSVG()', function(){
 
         assert.isTrue( processedStyleInsertedSVG.match(/test\.prefix-foo/g).length === 3 );
         // // replaces xlink:href=
-        assert.isTrue( processedStyleInsertedSVG.match(/xlink:href=/g).length === 1 );
+        assert.isTrue( processedStyleInsertedSVG.match(/xlink:href="#test.prefix-foo"/g).length === 1 );
         // // replaces url(#foo)
         assert.isTrue( processedStyleInsertedSVG.match(/url\(#test\.prefix-foo\)/g).length === 1 );
     });
