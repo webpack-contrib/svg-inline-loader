@@ -1,6 +1,6 @@
 var React = require('react');
 var assign = require('object-assign');
-
+var propTypes = require('prop-types');
 
 // DEPRECATED. Please use `svg-inline-react` package.
 //
@@ -16,8 +16,8 @@ var IconSVG = React.createClass({
         };
     },
     propTypes: {
-        src: React.PropTypes.string.isRequired,
-        elementName: React.PropTypes.string
+        src: propTypes.string.isRequired,
+        elementName: propTypes.string
     },
     render: function render() {
         var props = assign({}, this.props,

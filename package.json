@@ -12,6 +12,7 @@
   "dependencies": {
     "loader-utils": "^0.2.11",
     "object-assign": "^4.0.1",
+    "prop-types": "^15.6.0",
     "simple-html-tokenizer": "^0.1.1"
   },
   "devDependencies": {
