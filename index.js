@@ -20,11 +20,11 @@ var regexSequences = [
     [/\> \</g, "><"]                               // remove whitespace between tags
 ];
 
-function getExtractedSVG(svgStr, query) {
+function getExtractedSVG(svgStr, options) {
     var config;
     // interpolate hashes in classPrefix
-    if(!!query) {
-        config = assign({}, query);
+    if(!!options) {
+        config = assign({}, options);
 
         if (!!config.classPrefix) {
             const name = config.classPrefix === true ? '__[hash:base64:7]__' : config.classPrefix;
@@ -60,9 +60,9 @@ function SVGInlineLoader(content) {
     this.cacheable && this.cacheable();
     this.value = content;
     // Configuration
-    var query = loaderUtils.parseQuery(this.query);
+    var options = loaderUtils.getOptions(this);
 
-    return "module.exports = " + JSON.stringify(getExtractedSVG(content, query));
+    return "module.exports = " + JSON.stringify(getExtractedSVG(content, options));
 }
 
 SVGInlineLoader.getExtractedSVG = getExtractedSVG;
