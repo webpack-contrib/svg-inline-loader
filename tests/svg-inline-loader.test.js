@@ -153,3 +153,22 @@ describe('getExtractedSVG()', function(){
         console.warn = oldConsoleWarn; // reset console back
     });
 });
+
+describe('SVGInlineLoader', function() {
+    var processedSVG = SVGInlineLoader.getExtractedSVG(svgWithRect);
+
+    it("should export as commonjs export", function() {
+        expect(SVGInlineLoader.call({ query: "" }, svgWithRect))
+            .to.be.eql('module.exports = ' + JSON.stringify(processedSVG));
+    });
+
+    it("should export as default export for es6to5 transpilation", function() {
+        expect(SVGInlineLoader.call({ query: "?exportAsDefault" }, svgWithRect))
+            .to.be.eql('exports.default = ' + JSON.stringify(processedSVG));
+    });
+
+    it("should export as es6 default export", function() {
+        expect(SVGInlineLoader.call({ query: "?exportAsEs6Default" }, svgWithRect))
+            .to.be.eql('exports default ' + JSON.stringify(processedSVG));
+    });
+});
