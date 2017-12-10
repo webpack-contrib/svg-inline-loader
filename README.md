@@ -82,6 +82,18 @@ Adds a prefix to ids to avoid collision across svg files.
 
 default: `idPrefix: false`
 
+#### `exportAsDefault: boolean`, `exportAsEs6Default: boolean`
+
+There are different export formats available:
+
++ ```module.exports``` (default, cjs format). "Hello world" becomes ```module.exports = "Hello world";```
++ ```exports.default``` (when ```exportAsDefault``` param is set, es6to5 format). "Hello world" becomes ```exports.default = "Hello world";```
++ ```exports default``` (when ```exportAsEs6Default``` param is set, es6 format). "Hello world" becomes ```exports default "Hello world";```
+
+default: `exportAsDefault: false`
+
+default: `exportAsEs6Default: false`
+
 <h2 align="center">Example Usage</h2>
 
 ```js
