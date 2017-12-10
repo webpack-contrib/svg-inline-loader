@@ -11,5 +11,7 @@ module.exports = {
     classPrefix: false,
     idPrefix: false,
     warnTags: [],
-    warnTagAttrs: []
+    warnTagAttrs: [],
+    exportAsDefault: false,
+    exportAsEs6Default: false
 };
