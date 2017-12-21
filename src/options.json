@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "removeTags": {
+      "type": "boolean"
+    },
+    "removingTags": {
+      "type": "array"
+    },
+    "warnTags": {
+      "type": "array"
+    },
+    "removeSVGTagAttrs": {
+      "type": "boolean"
+    },
+    "removingTagAttrs": {
+      "type": "array"
+    },
+    "warnTagAttrs": {
+      "type": "array"
+    },
+    "classPrefix": {
+      "anyOf": [
+        { "type": "boolean" },
+        { "type": "string" }
+      ]
+    },
+    "idPrefix": {
+      "anyOf": [
+        { "type": "boolean" },
+        { "type": "string" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

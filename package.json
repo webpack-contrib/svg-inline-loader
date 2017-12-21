@@ -1,47 +1,85 @@
 {
   "name": "svg-inline-loader",
   "version": "0.8.0",
-  "description": "Cleans up and inlines your SVG files into Webpack module.",
   "author": "Jaeho Lee <me@jaeholee.org>",
+  "description": "Cleans up and inlines your SVG files into Webpack module.",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/cjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "karma start",
-    "release": "standard-version"
+    "start": "npm run build -- -w",
+    "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js' --copy-files",
+    "clean": "del-cli dist",
+    "commitlint": "commitlint",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "lint": "eslint --cache src test",
+    "ci:lint:commits": "commitlint --from=${CIRCLE_BRANCH} --to=${CIRCLE_SHA1}",
+    "lint-staged": "lint-staged",
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build",
+    "release": "standard-version",
+    "release:ci": "conventional-github-releaser -p angular",
+    "release:validate": "commitlint --from=$(git describe --tags --abbrev=0) --to=$(git rev-parse HEAD)",
+    "security": "nsp check",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --collectCoverageFrom='src/**/*.js' --coverage",
+    "ci:lint": "npm run lint && npm run security",
+    "ci:test": "npm run test -- --runInBand",
+    "ci:coverage": "npm run test:coverage -- --runInBand",
+    "defaults": "webpack-defaults"
   },
   "dependencies": {
-    "loader-utils": "^0.2.11",
-    "object-assign": "^4.0.1",
+    "loader-utils": "^1.1.0",
+    "schema-utils": "^0.4.3",
     "simple-html-tokenizer": "^0.1.1"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-spies": "^0.7.1",
-    "json-loader": "^0.5.4",
-    "karma": "^1.0.0",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-mocha": "^1.0.1",
-    "karma-spec-reporter": "0.0.26",
-    "karma-webpack": "^1.5.1",
+    "@commitlint/cli": "^5.2.5",
+    "@commitlint/config-angular": "^5.1.1",
+    "@webpack-contrib/eslint-config-webpack": "^2.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^22.0.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "conventional-github-releaser": "^2.0.0",
+    "cross-env": "^5.1.1",
+    "del": "^3.0.0",
+    "del-cli": "^1.1.0",
+    "eslint": "^4.13.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "husky": "^0.14.3",
+    "jest": "^22.0.3",
+    "json-loader": "^0.5.7",
+    "lint-staged": "^6.0.0",
     "lodash": "^4.6.1",
-    "mocha": "^2.5.3",
-    "node-libs-browser": "^1.0.0",
+    "memory-fs": "^0.4.1",
+    "nsp": "^3.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.9.2",
     "raw-loader": "^0.5.1",
     "standard-version": "^4.2.0",
-    "webpack": "^1.13.1"
+    "webpack": "^3.10.0",
+    "webpack-defaults": "^2.0.0-rc.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sairion/svg-inline-loader.git"
+  "engines": {
+    "node": ">= 6.9.0 || >= 8.9.0"
   },
-  "bugs": {
-    "url": "https://github.com/sairion/svg-inline-loader/issues"
+  "peerDependencies": {
+    "webpack": "^3.0.0 || ^4.0.0"
   },
-  "homepage": "https://github.com/sairion/svg-inline-loader",
-  "keywords": [
-    "svg",
-    "webpack",
-    "react",
-    "loader"
-  ]
+  "homepage": "https://github.com/webpack-contrib/svg-inline-loader",
+  "repository": "https://github.com/webpack-contrib/svg-inline-loader",
+  "bugs": "https://github.com/webpack-contrib/svg-inline-loader/issues",
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
 }
