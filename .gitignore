@@ -4,3 +4,17 @@ npm-debug.log
 # IDE
 .idea
 *.iml
+logs
+*.log
+npm-debug.log*
+.eslintcache
+/coverage
+/dist
+/local
+/reports
+/node_modules
+.DS_Store
+Thumbs.db
+.vscode
+*.sublime-project
+*.sublime-workspace
