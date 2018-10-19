@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/sairion/svg-inline-loader/compare/v0.8.2...v0.8.3) (2018-10-19)
+
+
+### Bug Fixes
+
+* correctly close xml tags with namespaces ([c5b4421](https://github.com/sairion/svg-inline-loader/commit/c5b4421))
+
+
+
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/sairion/svg-inline-loader/compare/v0.8.1...v0.8.2) (2018-10-17)
+
+
+
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/sairion/svg-inline-loader/compare/v0.8.0...v0.8.1) (2018-10-16)
+
+
+### Bug Fixes
+
+* also add id prefixes for ids within style tags ([eae3faf](https://github.com/sairion/svg-inline-loader/commit/eae3faf))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/sairion/svg-inline-loader/compare/0.6.1...v0.8.0) (2017-07-16)
 
