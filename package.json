@@ -1,6 +1,6 @@
 {
   "name": "@extronics/svg-inline-loader",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Cleans up and inlines your SVG files into Webpack module.",
   "author": "Jaeho Lee <me@jaeholee.org>",
   "license": "MIT",
