@@ -28,12 +28,12 @@ function getExtractedSVG(svgStr, query) {
 
         if (!!config.classPrefix) {
             const name = config.classPrefix === true ? '__[hash:base64:7]__' : config.classPrefix;
-            config.classPrefix = loaderUtils.interpolateName({}, name, { content: svgStr });
+            config.classPrefix = loaderUtils.interpolateName(this, name, { content: svgStr });
         }
 
         if (!!config.idPrefix) {
             const id_name = config.idPrefix === true ? '__[hash:base64:7]__' : config.idPrefix;
-            config.idPrefix = loaderUtils.interpolateName({}, id_name, { content: svgStr });
+            config.idPrefix = loaderUtils.interpolateName(this, id_name, { content: svgStr });
         }
     }
 
@@ -62,7 +62,7 @@ function SVGInlineLoader(content) {
     // Configuration
     var query = loaderUtils.parseQuery(this.query);
 
-    return "module.exports = " + JSON.stringify(getExtractedSVG(content, query));
+    return "module.exports = " + JSON.stringify(getExtractedSVG.call(this, content, query));
 }
 
 SVGInlineLoader.getExtractedSVG = getExtractedSVG;
