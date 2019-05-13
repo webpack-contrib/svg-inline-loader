@@ -3,7 +3,7 @@
     <defs>
       <path id="foo"></path>
     </defs>
-    <g>
+    <g style="mask: url(#foo); color: rgba(0, 0, 0, 0, .1)">
       <use xlink:href="#foo"></use>
       <path mask="url(#foo)"></path>
     </g>
