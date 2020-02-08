@@ -22,14 +22,31 @@ npm install svg-inline-loader --save-dev
 
 <h2 align="center">Configuration</h2>
 
-Simply add configuration object to `module.loaders` like this.
+- For `webpack` version > 1
 
-```javascript
-    {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader'
-    }
-```
+  Simply add configuration object to `module.rules` like this.
+
+  ```javascript
+      module :
+        {
+          rules : [
+              test: /\.svg$/,
+              use: 'svg-inline-loader'
+          ]
+
+      }
+  ```
+
+- For `webpack` version 1
+
+  use `module.loaders` like this.
+
+  ```javascript
+      {
+          test: /\.svg$/,
+          loader: 'svg-inline-loader'
+      }
+  ```
 
 warning: You should configure this loader only once via `module.loaders` or `require('!...')`. See [#15](https://github.com/webpack-contrib/svg-inline-loader/issues/15) for detail.
 
@@ -70,6 +87,7 @@ default: `removingTagAttrs: []`
 Warns to console about attributes from inside the `<svg />`.
 
 default: `warnTagAttrs: []`
+
 #### `classPrefix: boolean || string`
 
 Adds a prefix to class names to avoid collision across svg files.
@@ -86,17 +104,19 @@ default: `idPrefix: false`
 
 ```js
 // Using default hashed prefix (__[hash:base64:7]__)
-var logoTwo = require('svg-inline-loader?classPrefix!./logo_two.svg');
+var logoTwo = require('svg-inline-loader?classPrefix!./logo_two.svg')
 
 // Using custom string
-var logoOne = require('svg-inline-loader?classPrefix=my-prefix-!./logo_one.svg');
+var logoOne = require('svg-inline-loader?classPrefix=my-prefix-!./logo_one.svg')
 
 // Using custom string and hash
-var logoThree = require('svg-inline-loader?classPrefix=__prefix-[sha512:hash:hex:5]__!./logo_three.svg');
+var logoThree = require('svg-inline-loader?classPrefix=__prefix-[sha512:hash:hex:5]__!./logo_three.svg')
 ```
+
 See [loader-utils](https://github.com/webpack/loader-utils#interpolatename) for hash options.
 
 Preferred usage is via a `module.loaders`:
+
 ```js
     {
         test: /\.svg$/,
@@ -139,15 +159,11 @@ Preferred usage is via a `module.loaders`:
 
 [npm]: https://img.shields.io/npm/v/svg-inline-loader.svg
 [npm-url]: https://npmjs.com/package/svg-inline-loader
-
 [deps]: https://david-dm.org/webpack-contrib/svg-inline-loader.svg
 [deps-url]: https://david-dm.org/webpack-contrib/svg-inline-loader
-
 [chat]: https://img.shields.io/badge/gitter-webpack%2Fwebpack-brightgreen.svg
 [chat-url]: https://gitter.im/webpack/webpack
-
 [test]: https://travis-ci.org/webpack-contrib/svg-inline-loader.svg?branch=master
 [test-url]: https://travis-ci.org/webpack-contrib/svg-inline-loader
-
 [cover]: https://codecov.io/gh/webpack-contrib/svg-inline-loader/branch/master/graph/badge.svg
 [cover-url]: https://codecov.io/gh/webpack-contrib/svg-inline-loader
