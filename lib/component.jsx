@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var assign = require('object-assign');
 
 
@@ -16,8 +17,8 @@ var IconSVG = React.createClass({
         };
     },
     propTypes: {
-        src: React.PropTypes.string.isRequired,
-        elementName: React.PropTypes.string
+        src: PropTypes.string.isRequired,
+        elementName: PropTypes.string
     },
     render: function render() {
         var props = assign({}, this.props,
