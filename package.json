@@ -27,7 +27,7 @@
     "mocha": "^2.5.3",
     "node-libs-browser": "^1.0.0",
     "raw-loader": "^0.5.1",
-    "standard-version": "^4.2.0",
+    "standard-version": "^8.0.1",
     "webpack": "^1.13.1"
   },
   "repository": {
