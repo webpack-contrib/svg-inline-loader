@@ -56,12 +56,14 @@ describe('getExtractedSVG()', function(){
         var svgWithStyle = require('raw!./fixtures/with-ids.svg');
         var processedStyleInsertedSVG = SVGInlineLoader.getExtractedSVG(svgWithStyle, { idPrefix: 'test.prefix-' });
 
-
-        assert.isTrue( processedStyleInsertedSVG.match(/test\.prefix-foo/g).length === 3 );
+        assert.isTrue( processedStyleInsertedSVG.match(/test\.prefix-foo/g).length === 7 );
         // // replaces xlink:href=
-        assert.isTrue( processedStyleInsertedSVG.match(/xlink:href=/g).length === 1 );
+        assert.isTrue( processedStyleInsertedSVG.match(/xlink:href="#test.prefix-foo"/g).length === 1 );
         // // replaces url(#foo)
         assert.isTrue( processedStyleInsertedSVG.match(/url\(#test\.prefix-foo\)/g).length === 1 );
+        // replaces aria-labelledby
+        assert.isTrue( processedStyleInsertedSVG.match(
+          /aria-labelledby="test\.prefix-foo-title test\.prefix-foo-description"/g).length === 1 );
     });
 
     it('should be able to specify tags to be removed by `removingTags` option', function () {
