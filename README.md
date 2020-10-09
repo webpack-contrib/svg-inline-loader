@@ -4,6 +4,56 @@
 [![coverage][cover]][cover-url]
 [![chat][chat]][chat-url]
 
+# ! NO LONGER MAINTAINED !
+
+This module is deprecated and will no longer be maintained.
+
+In most cases, you can replace the functionality by using [`raw-loader`](https://github.com/webpack-contrib/raw-loader) and [`image-minimizer-webpack-plugin`](https://github.com/webpack-contrib/image-minimizer-webpack-plugin) instead:
+
+**webpack.config.js**
+
+```js
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "raw-loader"
+          }
+        ]
+      },
+    ],
+  },
+  plugins: [
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [
+          [
+            'imagemin-svgo',
+            {
+              plugins: [
+                // SVGO options is here "https://github.com/svg/svgo#what-it-can-do"
+                {
+                  removeViewBox: false,
+                  removeXMLNS: true,
+                },
+              ],
+            },
+          ],
+        ],
+      },
+    }),
+  ],
+};
+```
+
+For optimization svg use [`imagemin-svgo`](https://github.com/imagemin/imagemin-svgo).
+
+
 <div align="center">
   <!-- replace with accurate logo e.g from https://worldvectorlogo.com/ -->
   <a href="https://github.com/webpack/webpack">
