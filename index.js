@@ -12,10 +12,10 @@ var regexSequences = [
     // Remove XML stuffs and comments
     [/<\?xml[\s\S]*?>/gi, ""],
     [/<!doctype[\s\S]*?>/gi, ""],
-    [/<!--.*-->/gi, ""],
+    [/<!--[\s\S]*?-->/g, ""],
 
     // SVG XML -> HTML5
-    [/\<([A-Za-z]+)([^\>]*)\/\>/g, "<$1$2></$1>"], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
+    [/\<([a-z]+)([^\>]*)\/\>/gi, "<$1$2></$1>"], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
     [/\s+/g, " "],                                 // replace whitespace sequences with a single space
     [/\> \</g, "><"]                               // remove whitespace between tags
 ];
